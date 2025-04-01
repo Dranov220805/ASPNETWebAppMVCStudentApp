@@ -23,6 +23,15 @@
                 </ul>
             </div>
         </div>
+        <nav>
+            <ul>
+                <li>@Html.ActionLink("Departments", "Index", "Departments")</li>
+                <li>@Html.ActionLink("Instructors", "Index", "Instructors")</li>
+                <li>@Html.ActionLink("Courses", "Index", "Cours")</li>
+                <li>@Html.ActionLink("Students", "Index", "Students")</li>
+                <li>@Html.ActionLink("Enrollments", "Index", "Enrollments")</li>
+            </ul>
+        </nav>
     </nav>
     <div class="container body-content">
         @RenderBody()

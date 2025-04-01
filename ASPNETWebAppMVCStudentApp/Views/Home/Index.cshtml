@@ -1,6 +1,15 @@
-﻿@{
+﻿@if (Session["Username"] == null)
+{
+    Response.Redirect("~/Login");
+}
+
+@{
     ViewBag.Title = "Home Page";
 }
+
+<h2>Welcome, @Session["Username"]!</h2>
+<a href="@Url.Action("Logout", "Account")">Logout</a>
+
 
 <main>
     <section class="row" aria-labelledby="aspnetTitle">
