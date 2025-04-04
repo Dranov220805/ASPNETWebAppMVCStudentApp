@@ -13,10 +13,10 @@ namespace ASPNETWebAppMVCStudentApp
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SchoolDBqEntities : DbContext
+    public partial class SchoolDBqEntities1 : DbContext
     {
-        public SchoolDBqEntities()
-            : base("name=SchoolDBqEntities")
+        public SchoolDBqEntities1()
+            : base("name=SchoolDBqEntities1")
         {
         }
     
@@ -30,5 +30,6 @@ namespace ASPNETWebAppMVCStudentApp
         public virtual DbSet<Enrollment> Enrollments { get; set; }
         public virtual DbSet<Instructor> Instructors { get; set; }
         public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<tblUser> tblUsers { get; set; }
     }
 }

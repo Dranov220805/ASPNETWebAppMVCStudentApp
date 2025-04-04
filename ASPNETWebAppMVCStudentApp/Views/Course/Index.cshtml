@@ -1,13 +1,10 @@
 ﻿@model IEnumerable<ASPNETWebAppMVCStudentApp.Cours>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Course Management";
 }
-@if (Session["Username"] == null)
-{
-    Response.Redirect("~/Login");
-}
-<h2>Index</h2>
+
+<h2>Course Management</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")

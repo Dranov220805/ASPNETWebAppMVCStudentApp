@@ -12,11 +12,16 @@ namespace ASPNETWebAppMVCStudentApp.Controllers
 {
     public class EnrollmentsController : Controller
     {
-        private SchoolDBqEntities db = new SchoolDBqEntities();
+        private SchoolDBqEntities1 db = new SchoolDBqEntities1();
 
         // GET: Enrollments
+        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
         public ActionResult Index()
         {
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             var enrollments = db.Enrollments.Include(e => e.Cours).Include(e => e.Student);
             return View(enrollments.ToList());
         }

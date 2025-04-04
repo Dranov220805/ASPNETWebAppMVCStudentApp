@@ -50,6 +50,14 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="EnrollmentDate" Type="date" Nullable="false" />
         </EntityType>
+        <EntityType Name="tblUsers">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
         <Association Name="FK__Courses__Departm__3B75D760">
           <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
           <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
@@ -92,6 +100,7 @@
           <EntitySet Name="Enrollments" EntityType="Self.Enrollments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Instructors" EntityType="Self.Instructors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Courses__Departm__3B75D760" Association="Self.FK__Courses__Departm__3B75D760">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="Courses" EntitySet="Courses" />
@@ -161,6 +170,14 @@
           <Property Name="EnrollmentDate" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Enrollments" Relationship="Self.FK__Enrollmen__Stude__412EB0B6" FromRole="Students" ToRole="Enrollments" />
         </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
         <Association Name="FK__Courses__Departm__3B75D760">
           <End Role="Departments" Type="Self.Department" Multiplicity="0..1" />
           <End Role="Courses" Type="Self.Cours" Multiplicity="*" />
@@ -197,12 +214,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SchoolDBqEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="SchoolDBqEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Courses" EntityType="Self.Cours" />
           <EntitySet Name="Departments" EntityType="Self.Department" />
           <EntitySet Name="Enrollments" EntityType="Self.Enrollment" />
           <EntitySet Name="Instructors" EntityType="Self.Instructor" />
           <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
           <AssociationSet Name="FK__Courses__Departm__3B75D760" Association="Self.FK__Courses__Departm__3B75D760">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="Courses" EntitySet="Courses" />
@@ -221,7 +239,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SchoolDBqModelStoreContainer" CdmEntityContainer="SchoolDBqEntities">
+        <EntityContainerMapping StorageEntityContainer="SchoolDBqModelStoreContainer" CdmEntityContainer="SchoolDBqEntities1">
           <EntitySetMapping Name="Courses">
             <EntityTypeMapping TypeName="SchoolDBqModel.Cours">
               <MappingFragment StoreEntitySet="Courses">
@@ -269,6 +287,15 @@
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="EnrollmentDate" ColumnName="EnrollmentDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="SchoolDBqModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUsers">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

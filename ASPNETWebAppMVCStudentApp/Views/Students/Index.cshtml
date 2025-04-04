@@ -1,15 +1,12 @@
 ﻿@model IEnumerable<ASPNETWebAppMVCStudentApp.Student>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Student Management";
 }
-@if (Session["Username"] == null)
-{
-    Response.Redirect("~/Login");
-}
-<h2>Index</h2>
 
-<p>
+<h2>Student Management</h2>
+
+<p class="bg-warning">
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -29,13 +26,13 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            <td class="bg-gradient">
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
-            <td>
+            <td class="bg-info">
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
-            <td>
+            <td class="bg-success">
                 @Html.DisplayFor(modelItem => item.EnrollmentDate)
             </td>
             <td>

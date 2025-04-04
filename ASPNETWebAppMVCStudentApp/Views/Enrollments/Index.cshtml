@@ -1,13 +1,10 @@
 ﻿@model IEnumerable<ASPNETWebAppMVCStudentApp.Enrollment>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Enrollment Management";
 }
-@if (Session["Username"] == null)
-{
-    Response.Redirect("~/Login");
-}
-<h2>Index</h2>
+
+<h2>Enrollment Management</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -18,7 +15,7 @@
             @Html.DisplayNameFor(model => model.Grade)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cours.Title)
+            @Html.DisplayNameFor(model => model.Course.Title)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Student.FirstName)
@@ -33,7 +30,7 @@
                 @Html.DisplayFor(modelItem => item.Grade)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Cours.Title)
+                @Html.DisplayFor(modelItem => item.Course.Title)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Student.FirstName)
